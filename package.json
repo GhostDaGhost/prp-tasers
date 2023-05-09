@@ -1,0 +1,26 @@
+{
+  "name": "prp-tasers",
+  "version": "1.0.0",
+  "description": "A resource for ProductionRP",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run clearbuild && npm run typecheck && node builder.js && npm run obfuscate",
+    "clearbuild": "rimraf ./build",
+    "obfuscate": "javascript-obfuscator build --output build",
+    "typecheck": "tsc --noEmit -p src/client/tsconfig.json && tsc --noEmit -p src/server/tsconfig.json",
+    "watch": "npm run clearbuild && cross-env IS_WATCH_MODE=1 node builder.js && npm run obfuscate"
+  },
+  "author": "ProductionRP Dev Team",
+  "devDependencies": {
+    "@citizenfx/client": "^2.0.6063-1",
+    "@citizenfx/server": "^2.0.6063-1",
+    "@types/node": "^16.18.3",
+    "cross-env": "^7.0.3",
+    "esbuild": "^0.15.15",
+    "javascript-obfuscator": "^4.0.2",
+    "rimraf": "^3.0.2"
+  },
+  "dependencies": {
+    "typescript": "^5.0.4"
+  }
+}
